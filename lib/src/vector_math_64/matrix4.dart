@@ -678,6 +678,10 @@ class Matrix4 {
       tx = x;
       ty = y;
       tz = z;
+    } else if (x is int) {
+      tx = x.toDouble();
+      ty = y;
+      tz = z;
     } else {
       throw UnimplementedError();
     }
@@ -720,6 +724,10 @@ class Matrix4 {
       tz = x.z;
     } else if (x is double) {
       tx = x;
+      ty = y;
+      tz = z;
+    } else if (x is int) {
+      tx = x.toDouble();
       ty = y;
       tz = z;
     } else {
@@ -882,6 +890,10 @@ class Matrix4 {
       sx = x;
       sy = y ?? x;
       sz = z ?? x;
+    } else if (x is int) {
+      sx = x.toDouble();
+      sy = y ?? x.toDouble();
+      sz = z ?? x.toDouble();
     } else {
       throw UnimplementedError();
     }
