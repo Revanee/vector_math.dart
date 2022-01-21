@@ -5,22 +5,21 @@
 import 'dart:typed_data';
 
 import 'package:test/test.dart';
-
 import 'package:vector_math/vector_math.dart';
-import 'package:vector_math/vector_math_lists.dart';
 import 'package:vector_math/vector_math_geometry.dart';
+import 'package:vector_math/vector_math_lists.dart';
 
 import 'test_utils.dart';
 
 void testGenerateNormals() {
-  final Vector3List positions = Vector3List.fromList([
+  final positions = Vector3List.fromList([
     Vector3(-1.0, 1.0, 1.0),
     Vector3(1.0, 1.0, 1.0),
     Vector3(1.0, 1.0, -1.0),
     Vector3(1.0, -1.0, 1.0),
   ]);
 
-  final Uint16List indices = Uint16List.fromList([0, 1, 2, 3, 2, 1]);
+  final indices = Uint16List.fromList([0, 1, 2, 3, 2, 1]);
 
   final normals = Vector3List(positions.length);
 
@@ -33,28 +32,28 @@ void testGenerateNormals() {
 }
 
 void testGenerateTangents() {
-  final Vector3List positions = Vector3List.fromList([
+  final positions = Vector3List.fromList([
     Vector3(-1.0, 1.0, 1.0),
     Vector3(1.0, 1.0, 1.0),
     Vector3(1.0, 1.0, -1.0),
     Vector3(1.0, -1.0, 1.0),
   ]);
 
-  final Vector3List normals = Vector3List.fromList([
+  final normals = Vector3List.fromList([
     Vector3(0.0, 1.0, 0.0),
     Vector3(0.70710, 0.70710, 0.0),
     Vector3(0.70710, 0.70710, 0.0),
     Vector3(1.0, 0.0, 0.0),
   ]);
 
-  final Vector2List texCoords = Vector2List.fromList([
+  final texCoords = Vector2List.fromList([
     Vector2(-1.0, 1.0),
     Vector2(1.0, 1.0),
     Vector2(1.0, -1.0),
     Vector2(-1.0, 1.0),
   ]);
 
-  final Uint16List indices = Uint16List.fromList([0, 1, 2, 3, 2, 1]);
+  final indices = Uint16List.fromList([0, 1, 2, 3, 2, 1]);
 
   final tangents = Vector4List(positions.length);
 

@@ -38,8 +38,8 @@ void testVector4InstacingFromByteBuffer() {
 }
 
 void testVector4Add() {
-  final Vector4 a = Vector4(5.0, 7.0, 3.0, 10.0);
-  final Vector4 b = Vector4(3.0, 8.0, 2.0, 2.0);
+  final a = Vector4(5.0, 7.0, 3.0, 10.0);
+  final b = Vector4(3.0, 8.0, 2.0, 2.0);
 
   a.add(b);
   expect(a.x, equals(8.0));
@@ -55,8 +55,8 @@ void testVector4Add() {
 }
 
 void testVector4MinMax() {
-  final Vector4 a = Vector4(5.0, 7.0, -3.0, 10.0);
-  final Vector4 b = Vector4(3.0, 8.0, 2.0, 2.0);
+  final a = Vector4(5.0, 7.0, -3.0, 10.0);
+  final b = Vector4(3.0, 8.0, 2.0, 2.0);
 
   final result = Vector4.zero();
 
@@ -74,8 +74,8 @@ void testVector4MinMax() {
 }
 
 void testVector4Mix() {
-  final Vector4 a = Vector4(5.0, 7.0, 3.0, 10.0);
-  final Vector4 b = Vector4(3.0, 8.0, 2.0, 2.0);
+  final a = Vector4(5.0, 7.0, 3.0, 10.0);
+  final b = Vector4(3.0, 8.0, 2.0, 2.0);
 
   final result = Vector4.zero();
 
@@ -123,7 +123,7 @@ void testVector4Constructor() {
 }
 
 void testVector4Length() {
-  final Vector4 a = Vector4(5.0, 7.0, 3.0, 10.0);
+  final a = Vector4(5.0, 7.0, 3.0, 10.0);
 
   relativeTest(a.length, 13.5277);
   relativeTest(a.length2, 183.0);

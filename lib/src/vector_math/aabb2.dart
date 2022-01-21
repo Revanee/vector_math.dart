@@ -76,12 +76,10 @@ class Aabb2 {
     _max.setFrom(other._max);
   }
 
-  static Vector2 _center;
-  static Vector2 _halfExtents;
-  void _updateCenterAndHalfExtents() => copyCenterAndHalfExtents(
-        _center ??= Vector2.zero(),
-        _halfExtents ??= Vector2.zero(),
-      );
+  static final _center = Vector2.zero();
+  static final _halfExtents = Vector2.zero();
+  void _updateCenterAndHalfExtents() =>
+      copyCenterAndHalfExtents(_center, _halfExtents);
 
   /// Transform this by the transform [t].
   void transform(Matrix3 t) {
@@ -136,8 +134,8 @@ class Aabb2 {
 
   /// Return if this contains [other].
   bool containsAabb2(Aabb2 other) {
-    final Vector2 otherMax = other._max;
-    final Vector2 otherMin = other._min;
+    final otherMax = other._max;
+    final otherMin = other._min;
 
     return (_min.x < otherMin.x) &&
         (_min.y < otherMin.y) &&
@@ -154,8 +152,8 @@ class Aabb2 {
 
   /// Return if this intersects with [other].
   bool intersectsWithAabb2(Aabb2 other) {
-    final Vector2 otherMax = other._max;
-    final Vector2 otherMin = other._min;
+    final otherMax = other._max;
+    final otherMin = other._min;
 
     return (_min.x <= otherMax.x) &&
         (_min.y <= otherMax.y) &&

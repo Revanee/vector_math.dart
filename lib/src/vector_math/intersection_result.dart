@@ -5,13 +5,13 @@ part of vector_math;
 
 /// Defines a result of an intersection test.
 class IntersectionResult {
-  double _depth;
+  double? _depth;
 
   /// The penetration depth of the intersection.
-  double get depth => _depth;
+  double? get depth => _depth;
 
   /// The [axis] of the intersection.
-  final Vector3 axis = Vector3.zero();
+  final axis = Vector3.zero();
 
   IntersectionResult();
 }

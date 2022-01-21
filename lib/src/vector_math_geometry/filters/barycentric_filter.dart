@@ -11,46 +11,44 @@ class BarycentricFilter extends GeometryFilter {
 
   @override
   MeshGeometry filter(MeshGeometry mesh) {
-    final List<VertexAttrib> newAttribs =
-        List<VertexAttrib>.from(mesh.attribs, growable: true);
+    final newAttribs = List<VertexAttrib>.from(mesh.attribs);
 
     if (mesh.getAttrib('BARYCENTRIC') == null) {
       newAttribs.add(VertexAttrib('BARYCENTRIC', 3, 'float'));
     }
 
-    final MeshGeometry output =
-        MeshGeometry(mesh.triangleVertexCount, newAttribs);
+    final output = MeshGeometry(mesh.triangleVertexCount, newAttribs);
 
     Vector3List barycentricCoords;
-    final VectorList<Vector> view = output.getViewForAttrib('BARYCENTRIC');
+    final view = output.getViewForAttrib('BARYCENTRIC');
     if (view is Vector3List) {
       barycentricCoords = view;
     } else {
-      return null;
+      throw UnimplementedError();
     }
 
-    final List<VectorList<Vector>> srcAttribs = <VectorList<Vector>>[];
-    final List<VectorList<Vector>> destAttribs = <VectorList<Vector>>[];
+    final srcAttribs = <VectorList<Vector>>[];
+    final destAttribs = <VectorList<Vector>>[];
     for (var attrib in mesh.attribs) {
       if (attrib.name == 'BARYCENTRIC') {
         continue;
       }
 
-      srcAttribs.add(mesh.getViewForAttrib(attrib.name));
-      destAttribs.add(output.getViewForAttrib(attrib.name));
+      srcAttribs.add(mesh.getViewForAttrib(attrib.name)!);
+      destAttribs.add(output.getViewForAttrib(attrib.name)!);
     }
 
-    final Vector3 b0 = Vector3(1.0, 0.0, 0.0);
-    final Vector3 b1 = Vector3(0.0, 1.0, 0.0);
-    final Vector3 b2 = Vector3(0.0, 0.0, 1.0);
+    final b0 = Vector3(1.0, 0.0, 0.0);
+    final b1 = Vector3(0.0, 1.0, 0.0);
+    final b2 = Vector3(0.0, 0.0, 1.0);
 
     int i0, i1, i2;
 
     for (var i = 0; i < output.length; i += 3) {
       if (mesh.indices != null) {
-        i0 = mesh.indices[i];
-        i1 = mesh.indices[i + 1];
-        i2 = mesh.indices[i + 2];
+        i0 = mesh.indices![i];
+        i1 = mesh.indices![i + 1];
+        i2 = mesh.indices![i + 2];
       } else {
         i0 = i;
         i1 = i + 1;

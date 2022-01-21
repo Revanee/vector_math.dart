@@ -13,14 +13,14 @@ Vector3 $v3(double x, double y, double z) => Vector3(x, y, z);
 Vector4 $v4(double x, double y, double z, double w) => Vector4(x, y, z, w);
 
 void relativeTest(dynamic output, dynamic expectedOutput) {
-  final num errorThreshold = 0.0005;
+  final errorThreshold = 0.0005;
   final num error = relativeError(output, expectedOutput).abs();
   expect(error >= errorThreshold, isFalse,
       reason: '$output != $expectedOutput : relativeError = $error');
 }
 
 void absoluteTest(dynamic output, dynamic expectedOutput) {
-  final num errorThreshold = 0.0005;
+  final errorThreshold = 0.0005;
   final num error = absoluteError(output, expectedOutput).abs();
   expect(error >= errorThreshold, isFalse,
       reason: '$output != $expectedOutput : absoluteError = $error');
@@ -99,6 +99,8 @@ T parseVector<T extends Vector>(String v) {
     r = Vector3(values[0], values[1], values[2]);
   } else if (values.length == 4) {
     r = Vector4(values[0], values[1], values[2], values[3]);
+  } else {
+    throw UnimplementedError();
   }
 
   return r as T;

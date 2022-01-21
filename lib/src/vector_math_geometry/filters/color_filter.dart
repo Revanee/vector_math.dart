@@ -26,14 +26,14 @@ class ColorFilter extends GeometryFilter {
       output = MeshGeometry.copy(mesh);
     }
 
-    final VectorList<Vector> colors = output.getViewForAttrib('COLOR');
+    final colors = output.getViewForAttrib('COLOR');
     if (colors is Vector4List) {
       for (var i = 0; i < colors.length; ++i) {
         colors[i] = color;
       }
       return output;
     } else {
-      return null;
+      throw UnimplementedError();
     }
   }
 }

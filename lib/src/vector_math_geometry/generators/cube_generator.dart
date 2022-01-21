@@ -5,9 +5,9 @@
 part of vector_math_geometry;
 
 class CubeGenerator extends GeometryGenerator {
-  double _width;
-  double _height;
-  double _depth;
+  late double _width;
+  late double _height;
+  late double _depth;
 
   @override
   int get vertexCount => 24;
@@ -16,7 +16,7 @@ class CubeGenerator extends GeometryGenerator {
   int get indexCount => 36;
 
   MeshGeometry createCube(num width, num height, num depth,
-      {GeometryGeneratorFlags flags, List<GeometryFilter> filters}) {
+      {GeometryGeneratorFlags? flags, List<GeometryFilter>? filters}) {
     _width = width.toDouble();
     _height = height.toDouble();
     _depth = depth.toDouble();
